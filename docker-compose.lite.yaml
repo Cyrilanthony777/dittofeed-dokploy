@@ -62,7 +62,7 @@ services:
     #   - .env
     networks:
       - dittofeed-network-lite
-      - dokploy-network
+
   temporal:
     container_name: temporal
     restart: always
@@ -85,7 +85,6 @@ services:
       kompose.volume.type: configMap
     networks:
       - dittofeed-network-lite
-      - dokploy-network
     ports:
       - 7233:7233
     volumes:
@@ -121,7 +120,7 @@ services:
       - postgres:/var/lib/postgresql/data
     networks:
       - dittofeed-network-lite
-      - dokploy-network
+ 
   clickhouse-server:
     image: clickhouse/clickhouse-server:24.12.6.70-alpine
     restart: always
@@ -142,7 +141,7 @@ services:
       - clickhouse_log:/var/log/clickhouse-server
     networks:
       - dittofeed-network-lite
-      - dokploy-network
+
   # Note that minio is only used for local development. In production, use any S3-compatible storage.
   blob-storage:
     image: minio/minio
