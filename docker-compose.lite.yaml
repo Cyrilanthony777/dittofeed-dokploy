@@ -42,19 +42,6 @@ services:
     networks:
       - dittofeed-network-lite
       - dokploy-network
-    labels:
-      - traefik.docker.network=dokploy-network
-      - traefik.http.routers.personal-dittofeed-nagm1f-2-web.rule=Host(`ditto.tinytools.cloud`)
-      - traefik.http.routers.personal-dittofeed-nagm1f-2-web.entrypoints=web
-      - traefik.http.services.personal-dittofeed-nagm1f-2-web.loadbalancer.server.port=3000
-      - traefik.http.routers.personal-dittofeed-nagm1f-2-web.service=personal-dittofeed-nagm1f-2-web
-      - traefik.http.routers.personal-dittofeed-nagm1f-2-web.middlewares=redirect-to-https@file
-      - traefik.http.routers.personal-dittofeed-nagm1f-2-websecure.rule=Host(`ditto.tinytools.cloud`)
-      - traefik.http.routers.personal-dittofeed-nagm1f-2-websecure.entrypoints=websecure
-      - traefik.http.services.personal-dittofeed-nagm1f-2-websecure.loadbalancer.server.port=3000
-      - traefik.http.routers.personal-dittofeed-nagm1f-2-websecure.service=personal-dittofeed-nagm1f-2-websecure
-      - traefik.http.routers.personal-dittofeed-nagm1f-2-websecure.tls.certresolver=letsencrypt
-      - traefik.enable=true
   # useful for upgrading dittofeed
   admin-cli:
     image: dittofeed/dittofeed-admin-cli:${IMAGE_TAG:-v0.22.0}
