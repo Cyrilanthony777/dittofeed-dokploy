@@ -32,6 +32,8 @@ services:
       - postgres
       - temporal
       - clickhouse-server
+    ports:
+      - "7001:3000"
     environment:
       <<: *backend-app-env
       # comment out after initial setup
